@@ -4,6 +4,7 @@ const nm = Nightmare({show: true});
 const baseUrl = 'http://www.nhm.ac.uk';
 let acc = [];
 
+// step gets all the urls you need to go to
 nm.goto(`${baseUrl}/discover/dino-directory/name/name-az-all.html`)
   .evaluate(function() {
     let results = [];
@@ -16,6 +17,7 @@ nm.goto(`${baseUrl}/discover/dino-directory/name/name-az-all.html`)
     return results;
   }).then(crawl).catch(bail);
 
+// recursive function: another way to loop
 function crawl(urls) {
   if (urls.length < 2) {
     nm.goto(baseUrl + urls.pop())
@@ -24,6 +26,8 @@ function crawl(urls) {
       .then(function(result) {
         acc = result;
         let dinos = { dinosaurs: acc };
+        // add feature: if file does not exist then create it
+        // when it tries to write it throws an error
         fs.writeFileSync('results/dinos.json', JSON.stringify(dinos), 'utf8');
         console.log(`Finished scraping ${acc.length} dinos to results/dinos.json`);
       })
@@ -62,4 +66,3 @@ function scrape(acc) {
 function bail(err) {
   console.error(err);
 }
-
