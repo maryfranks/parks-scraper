@@ -1,12 +1,12 @@
 {
-  "name": "dino-scraper",
+  "name": "parks-Ontario-scraper",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Devon Noel de Tilly (devon.noeldetilly@gmail.com)",
+  "author": "Mary Franks (maryfranks@gmail.com) and Nadia Ivanova (nadiaivannova@gmail.com)",
   "license": "MIT",
   "dependencies": {
     "nightmare": "^2.10.0"
