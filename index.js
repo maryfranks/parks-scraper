@@ -21,8 +21,18 @@ nm.goto(`${baseUrl}/parksguide`)
         return self.indexOf(value) === index;
     });
 
+// each park has subpages for camping, activities, a facilities
+    uniqueParks.map(function (park) {
+      let campingURL = park + '/camping';
+      uniqueParks.push(campingURL);
+      let activitiesURL = park + '/activities';
+      uniqueParks.push(activitiesURL);
+      let facilitiesURL = park + '/facilities';
+      uniqueParks.push(facilitiesURL);
+    });
+
     return uniqueParks;
-    // return results;
+
   }).then(function(uniqueParks){
     console.log(uniqueParks);
   });
