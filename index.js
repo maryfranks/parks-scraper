@@ -5,30 +5,24 @@ const baseUrl = 'http://www.ontarioparks.com';
 let acc = [];
 
 // step 1: gets main park page urls and stores them in array called uniqueParks
-// nm.goto(`${baseUrl}/parksguide`)
-//   .evaluate(function() {
-//     let results = [];
-//     let parkLinks = document.querySelectorAll('.col-xs-3 a');
-//
-//     for(let i=0; i < parkLinks.length; i++) {
-//       results.push(parkLinks[i].getAttribute('href'));
-//     }
-//
-//     // parkLinks has some duplicates for sites like Algonquin that have more
-//     // than one campsite link in the main list
-//     let uniqueParks = results.filter(function (value, index, self) {
-//         return self.indexOf(value) === index;
-//     });
-//
-//     return uniqueParks;
-//
-//   }).then(crawl).catch(bail);
-
-
-
-// step 2: set of subpages with the real info we want and stores in array parkFeaturesURLs
-
 nm.goto(`${baseUrl}/parksguide`)
+  .evaluate(function() {
+    let results = [];
+    let parkLinks = document.querySelectorAll('.col-xs-3 a');
+
+    for(let i=0; i < parkLinks.length; i++) {
+      results.push(parkLinks[i].getAttribute('href'));
+    }
+
+    // parkLinks has some duplicates for sites like Algonquin that have more
+    // than one campsite link in the main list
+    let uniqueParks = results.filter(function (value, index, self) {
+        return self.indexOf(value) === index;
+    });
+
+    return uniqueParks;
+
+  }).then(nm.goto(`${baseUrl}/parksguide`)
   .evaluate(function() {
     let results = []
     let parkFeaturesURLs = [];
@@ -56,7 +50,7 @@ nm.goto(`${baseUrl}/parksguide`)
 
     return parkFeaturesURLs;
 
-  }).then(crawl).catch(bail);
+  })).then(crawl).catch(bail);
 
 
 // recursive function: another way to loop
