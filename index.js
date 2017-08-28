@@ -84,6 +84,7 @@ function scrape(acc) {
 
   // get the park name (probably from both types of pages)
   result['name'] = document.querySelector('h1').innerText;
+  result['url'] = document.URL
 
   // get the park features as boolean values from the features URLs
   let keys = document.querySelectorAll('.tab-content h2');
