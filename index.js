@@ -42,7 +42,7 @@ function crawl(urls) {
         let parks = { ontarioParks: acc };
         // add feature: if file does not exist then create it
         // when it tries to write it throws an error
-        fs.writeFileSync('results/ontarioparks_test.json', JSON.stringify(parks), 'utf8');
+        fs.writeFileSync('results/ontarioparks.json', JSON.stringify(parks), 'utf8');
         console.log(`Finished scraping ${acc.length} parks to results/ontarioparks.json`);
       })
       .catch(bail);
