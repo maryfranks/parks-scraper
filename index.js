@@ -18,6 +18,12 @@ nm.goto(`${baseUrl}/parksguide`)
         return self.indexOf(value) === index;
     });
 
+    for (var i = 0; i < uniqueParks.length; i++) {
+      if (uniqueParks[i] === "/park/thepinery") {
+        uniqueParks[i] = "/park/pinery"
+      }
+    }
+
     uniqueParks.map(function (park) {
       let campingURL = park + '/camping';
       uniqueParks.push(campingURL);
