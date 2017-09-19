@@ -66,7 +66,7 @@ function crawl(urls) {
 function scrape(acc) {
   let result = {};
 
-  // get the park name (probably from both types of pages)
+  // get the park name
   result['name'] = document.querySelector('h1').innerText;
   result['url'] = document.URL
 
