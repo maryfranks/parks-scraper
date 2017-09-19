@@ -14,3 +14,6 @@ Make sure you have a later version of Node.js installed, then:
 $ npm install
 $ node index.js
 ```
+
+**Reach out**:
+[My website](http://maryfranks.me) | [I'm on LinkedIn](https://www.linkedin.com/in/maryfranks/)
